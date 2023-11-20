@@ -1,49 +1,47 @@
-/* 
- * Custom Bubble Sort Implementation
- * File: custom_sort.c
- */
-
-#include "sorting_utils.h"
+#include "sort.h"
 
 /**
- * swap_elements - Swap two elements in an array.
- * @a: Pointer to the first element.
- * @b: Pointer to the second element.
+ * swap_ints - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
  */
-void swap_elements(int *a, int *b)
+void swap_ints(int *a, int *b)
 {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
- * custom_bubble_sort - Sort an array of integers in ascending order using bubble sort.
- * @arr: Pointer to the array of integers.
- * @size: Size of the array.
+ * bubble_sort - Sort an array of integers in ascending order.
+ * @array: An array of integers to sort.
+ * @size: The size of the array.
  *
- * Description: This function prints the array after each swap.
+ * Description: Prints the array after each swap.
  */
-void custom_bubble_sort(int *arr, size_t size)
+void bubble_sort(int *array, size_t size)
 {
-    size_t i, len = size;
-    bool swapped = false;
+	size_t i, len = size;
+	bool bubbly = false;
 
-    if (arr == NULL || size < 2)
-        return;
+	if (array == NULL || size < 2)
+		return;
 
-    while (!swapped)
-    {
-        swapped = true;
-        for (i = 0; i < len - 1; i++)
-        {
-            if (arr[i] > arr[i + 1])
-            {
-                swap_elements(arr + i, arr + i + 1);
-                print_array(arr, size);
-                swapped = false;
-            }
-        }
-        len--;
-    }
+	while (bubbly == false)
+	{
+		bubbly = true;
+		for (i = 0; i < len - 1; i++)
+		{
+			if (array[i] > array[i + 1])
+			{
+				swap_ints(array + i, array + i + 1);
+				print_array(array, size);
+				bubbly = false;
+			}
+		}
+		len--;
+	}
+}
 }
